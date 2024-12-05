@@ -3,8 +3,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UsersController extends Controller
 {
@@ -31,6 +32,9 @@ class UsersController extends Controller
         return view('users.change_password_users', $data);
     }
 
+    //proses ganti password
+    public function proses_change_password_user(Request $request, $id) {}
+
     // ini untuk tampilan ganti profile
     public function change_profile_user()
     {
@@ -41,6 +45,42 @@ class UsersController extends Controller
 
         return view('users.change_profile_users', $data);
     }
+
+    public function proses_change_profile_user(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $request->validate([
+            'photo' => 'image|mimes:jpeg,png,jpg|max:4096',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:4096|unique:users,email' . $user->$id,
+        ]);
+
+        //update nama dan email
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+
+        //update foto jika diunggah
+        if ($request->hasFile('photo')) {
+            if ($user->photo) {
+                $oldPhotoPath = public_path('uploads/photo_users/' . $user->photo);
+                if (File::exists($oldPhotoPath)) {
+                    File::delete($oldPhotoPath);
+                }
+            }
+
+            $file = $request->file('photo');
+            $photoName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('uploads/photo_users'), $photoName);
+
+            $user->update(['photo' => $photoName]);
+        }
+
+        return redirect()->back()->with('success', 'Foto profil berhasil diperbarui.');
+    }
+
 
     // untuk menampilkan hasil nilai user setelah ujian
     public function result_value()
