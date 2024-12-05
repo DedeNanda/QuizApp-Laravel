@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
+:root {
+    --warna1: #001f3f;
+    --warna2: #fefae0;
+    --warna3: #6a9ab0;
+    --warna4: #a02334;
+    --warna5: #b4d6cd;
+    --warna6: #ccd5ae;
+    --warna8: #387478;
+}
+
+body {
+    font-family: "Nunito";
+    background-image: url("../image/login.png");
+    background-size: cover;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.header h1 {
+    font-size: 45px;
+    color: var(--warna1);
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--warna2);
+}
+
+.header h1:hover {
+    text-shadow: 0 0 10px var(--warna3);
+}
+
+.header span {
+    color: var(--warna4);
+}
+
+.wrapper {
+    width: 250px;
+    height: 510px;
+    border-radius: 8px;
+    padding: 30px;
+    text-align: center;
+    border: 2px solid var(--warna1);
+    box-shadow: 0 0 10px var(--warna8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.wrapper form {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--warna5);
+}
+
+.input-field {
+    position: relative;
+    border-bottom: 2px solid var(--warna6);
+    margin: 15px 0;
+}
+
+.input-field input {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: var(--warna2);
+}
+
+.input-field label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    color: var(--warna5);
+    font-size: 16px;
+    pointer-events: none;
+    transition: 0.15s ease;
+}
+
+.input-field input:focus ~ label,
+.input-field input:valid ~ label {
+    font-size: 0.8rem;
+    top: 10px;
+    transform: translateY(-120%);
+}
+
+.forget {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px 0 35px 0;
+    color: var(--warna2);
+}
+
+.register p {
+    color: var(--warna2);
+}
+
+button {
+    background: var(--warna1);
+    color: var(--warna2);
+    font-weight: bold;
+    border: none;
+    padding: 12px 20px;
+    margin-top: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+}
+button:hover {
+    color: var(--warna6);
+    border-color: var(--warna1);
+    background: var(--warna8);
+    box-shadow: 0 0 10px var(--warna5);
+}
+.register {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+}
+
+.register a {
+    text-decoration: none;
+    color: var(--warna4);
+    font-weight: bold;
+}
+
+.register a:hover {
+    color: var(--warna5);
+}
+
+/* sini untuk registr */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+    display: block;
+}
