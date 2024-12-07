@@ -44,9 +44,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change_profile_user', [UsersController::class, 'change_profile_user'])->name('change_profile_user');
     Route::get('/history_value_users', [UsersController::class, 'history_value_users'])->name('history_value_users');
     Route::get('/result_value', [UsersController::class, 'result_value'])->name('result_value');
+    Route::get('/soal_ipa', [UsersController::class, 'soal_ipa'])->name('soal_ipa');
     
     //proses for user untuk change profile dan password
     Route::post('/proses_change_profile_user/{id}', [UsersController::class, 'proses_change_profile_user'])->name('proses_change_profile_user');
+    Route::post('/proses_change_password_user/{id}', [UsersController::class, 'proses_change_password_user'])->name('proses_change_password_user');
+    
 
 });
 

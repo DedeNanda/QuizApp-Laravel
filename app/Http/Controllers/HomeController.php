@@ -31,11 +31,13 @@ class HomeController extends Controller
 
     public function proses_login(Request $request)
     {
+        // Validasi input
         $request->validate([
             'email' => 'required',
             'password' => 'required'
         ]);
 
+        // Cari user berdasarkan email
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
@@ -44,6 +46,7 @@ class HomeController extends Controller
                 return redirect()->back()->with('login_gagal', 'Akun Anda diblokir sementara. Silakan coba lagi nanti.');
             }
 
+            // Validasi kredensial
             $credential = $request->only('email', 'password');
 
             if (Auth::attempt($credential)) {
@@ -53,6 +56,7 @@ class HomeController extends Controller
                     'blocked_until' => null
                 ]);
 
+                // Redirect berdasarkan level user
                 if ($user->level == 'admin') {
                     return redirect()->intended('admin');
                 } else if ($user->level == 'user') {
@@ -62,16 +66,19 @@ class HomeController extends Controller
                 return redirect()->intended('/');
             }
 
-            // Increment login attempts jika gagal
+            // Increment login attempts jika gagal login
             $user->increment('login_attempts');
 
-            if ($user->login_attempts >= 100) {
+            if ($user->login_attempts >= 3) {
                 $user->update(['blocked_until' => now()->addMinutes(10)]);
                 return redirect()->back()->with('login_gagal', 'Akun Anda diblokir sementara setelah terlalu banyak percobaan login.');
             }
 
             return redirect()->back()->with('login_gagal', 'Email atau password salah!');
         }
+
+        // Jika user tidak ditemukan
+        return redirect()->back()->with('login_gagal', 'Email atau password salah!');
     }
 
     public function register()
@@ -120,5 +127,4 @@ class HomeController extends Controller
         Auth::logout();
         return Redirect('/');
     }
-
 }

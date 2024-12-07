@@ -1,4 +1,4 @@
-//untuk pesan gagal login
+//untuk pesan pada sweet alert
 document.addEventListener("DOMContentLoaded", function () {
     // Pesan sukses
     const successMessage = document.getElementById("success-message");
