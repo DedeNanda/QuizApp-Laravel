@@ -11,7 +11,7 @@
 </head>
 <body>
   {{-- Pilihan ganda IPS --}}
-<div class="soal-ips">
+<div class="choose-soal">
   <h1>ini soal IPS</h1>
 
     <form action="#" method="POST">
@@ -19,92 +19,92 @@
 
       <!-- Soal 1 -->
       <div class="soal">
-        <h3>1. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>1. Sumber daya alam yang tidak dapat diperbarui adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Air</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Batu Bara (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Angin</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Tanah</label>
       </div>
 
       <!-- Soal 2 -->
       <div class="soal">
-        <h3>2. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>2. Proklamasi kemerdekaan Indonesia dibacakan pada tanggal...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. 14 Agustus 1945</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. 15 Agustus 1945</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. 16 Agustus 1945</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. 17 Agustus 1945 (ini jawabanya)</label>
       </div>
 
       <!-- Soal 3 -->
       <div class="soal">
-        <h3>3. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>3. Nama kerajaan Hindu pertama di Indonesia adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Majapahit</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Sriwijaya</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Kutai (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Tarumanegara</label>
       </div>
 
       <!-- Soal 4 -->
       <div class="soal">
-        <h3>4. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>4. Benua yang dijuluki sebagai benua hitam adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Asia</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Afrika (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Eropa</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Australia</label>
       </div>
 
       <!-- Soal 5 -->
       <div class="soal">
-        <h3>5. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>5. Gunung api tertinggi di Indonesia adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Gunung Rinjani</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Gunung Semeru</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Gunung Kerinci (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Gunung Marapi</label>
       </div>
 
       <!-- Soal 6 -->
       <div class="soal">
-        <h3>6. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>6. Jenis tanaman yang paling banyak ditemukan di daerah tropis adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Gandum</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Jagung</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Padi (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Kentang</label>
       </div>
 
       <!-- Soal 7 -->
       <div class="soal">
-        <h3>7. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>7. Penyebab utama terjadinya gempa tektonik adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Letusan gunung merapi</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Pergerakan lempeng bumi</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Erosi tanah</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Hujan deras</label>
       </div>
 
       <!-- Soal 8 -->
       <div class="soal">
-        <h3>8. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>8. Negara yang dikenal sebagai “Negeri Tirai Bambu” adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Jepang</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Korea Selatan</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Tiongkok (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Vietnam</label>
       </div>
 
       <!-- Soal 9 -->
       <div class="soal">
-        <h3>9. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>9. Perjanjian Linggarjati terjadi antara Indonesia dan...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Belanda</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Jepang</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Inggris</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Portugis</label>
       </div>
 
       <!-- Soal 10 -->
       <div class="soal">
-        <h3>10. </h3>
-        <label><input type="radio" name="soal1" value="A"> A. </label><br>
-        <label><input type="radio" name="soal1" value="B"> B. </label><br>
-        <label><input type="radio" name="soal1" value="C"> C. </label><br>
-        <label><input type="radio" name="soal1" value="D"> D. </label>
+        <h3>10. Sungai terpanjang di dunia adalah...</h3>
+        <label><input type="radio" name="soal1" value="A"> A. Sungai Nil (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal1" value="B"> B. Sungai Amazon</label><br>
+        <label><input type="radio" name="soal1" value="C"> C. Sungai Mississippi</label><br>
+        <label><input type="radio" name="soal1" value="D"> D. Sungai Yangtze</label>
       </div>
       
     <button type="submit" class="save-btn">Selesai</button>

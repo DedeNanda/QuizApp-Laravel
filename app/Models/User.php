@@ -21,6 +21,18 @@ class User extends Authenticatable
         'photo',
     ];
 
+    //memanggil data dalam user ke soal_ipa
+    public function ipa()
+    {
+        return $this->hasMany(Ipa::class, 'id_user', 'id');
+    }
+
+    //memanggil data dalam user ke soal_ips
+    public function ips()
+    {
+        return $this->hasMany(Ips::class, 'id_user', 'id');
+    }
+
 
     protected $hidden = [
         'password',

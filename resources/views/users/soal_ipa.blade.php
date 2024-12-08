@@ -10,8 +10,9 @@
   <link rel="stylesheet" href="{{ asset("css/ipa_ips.css") }}">
 </head>
 <body>
+  
   {{-- Pilihan ganda IPA --}}
-<div class="soal-ipa">
+<div class="choose-soal">
   <h1>ini soal IPA</h1>
 
     <form action="#" method="POST">

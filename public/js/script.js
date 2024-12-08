@@ -10,6 +10,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    //pesan succes pada change profile dan password
+    const successMessageUser = document.getElementById("success-message-user");
+    if (successMessageUser) {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: successMessageUser.dataset.message,
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
+
     // Pesan error
     const errorMessage = document.getElementById("error-message");
     if (errorMessage) {
@@ -70,14 +82,4 @@ const nameMonth = [
 ];
 const dateDisplay = document.getElementById("dateDisplay");
 dateDisplay.textContent = `${nameDay[day]}, ${date} ${nameMonth[month]} ${year}`;
-
-//modal pada index_users sesuai mata pelajaran
-const quizModal = document.getElementById("quizModal");
-quizModal.addEventListener("show.bs.modal", function (event) {
-    const button = event.relatedTarget;
-    const subject = button.getAttribute("data-subject");
-    const subjectNameElement = document.getElementById("subject-name");
-    subjectNameElement.textContent = subject;
-});
-
 

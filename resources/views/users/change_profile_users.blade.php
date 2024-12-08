@@ -5,7 +5,7 @@
 {{-- ganti photo user --}}
 
 @if(session('success'))
-    <div id="success-message" data-message="{{ session('success') }}"></div>
+    <div id="success-message-user" data-message="{{ session('success') }}"></div>
 @endif
 
 <div class="change-photo-users">
@@ -25,7 +25,7 @@
         </div>  
         <div class="form-group">
             <label for="name">Nama</label>
-            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name">
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" value="">
         </div>
         <div class="form-group">
             <label for="email">Email</label>

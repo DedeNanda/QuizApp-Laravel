@@ -124,6 +124,10 @@ class UsersController extends Controller
         return view('users.soal_ipa', $data);
     }
 
+    public function proses_soal_ipa(){
+        
+    }
+
     // untuk soal IPS
     public function soal_ips()
     {

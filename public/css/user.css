@@ -121,6 +121,42 @@ img.rounded-circle {
     }
 }
 
+/* bagian index_user pada modal */
+.modal-content {
+    background: #ffffff;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-content:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 1rem 1.5rem;
+}
+
+.modal-header h5 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.modal-body ul {
+    padding-left: 0;
+    margin: 1rem 0;
+}
+
+.modal-body ul li {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.modal-footer {
+    padding: 1rem 1.5rem;
+}
+
 /* bagian change passowrd user dan admin sama aja*/
 
 .change-password-users {
