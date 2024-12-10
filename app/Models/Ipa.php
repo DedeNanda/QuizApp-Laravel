@@ -9,6 +9,8 @@ class Ipa extends Model
 {
     use HasFactory;
 
+    protected $table = 'soal_ipa';
+
     protected $fillable = [
         'id_user',
         'name_user',
@@ -25,6 +27,14 @@ class Ipa extends Model
         'value_result',
     ];
 
+
+    //untuk mengambil data id dari user  
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    //untuk join data model ke InfoPassed
     public function infopassedfromipa()
     {
         return $this->hasMany(InfoPassed::class, 'id_soal', 'id');

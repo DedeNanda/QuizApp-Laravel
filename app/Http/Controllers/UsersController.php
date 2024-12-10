@@ -3,6 +3,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ipa;
+use App\Models\Ips;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -114,6 +116,16 @@ class UsersController extends Controller
     }
 
 
+    // untuk menampilkan hasil nilai user setelah ujian
+    public function result_value()
+    {
+        $data = array(
+            'title' => 'Hasil Nilai Quiz App',
+        );
+
+        return view('users.result_value', $data);
+    }
+
     // untuk soal IPA
     public function soal_ipa()
     {
@@ -124,8 +136,60 @@ class UsersController extends Controller
         return view('users.soal_ipa', $data);
     }
 
-    public function proses_soal_ipa(){
-        
+    public function proses_selesai_ujian_soal_ipa(Request $request)
+    {
+        // Validasi input
+        $validated = $request->validate([
+            'soal_1' => 'required|string',
+            'soal_2' => 'required|string',
+            'soal_3' => 'required|string',
+            'soal_4' => 'required|string',
+            'soal_5' => 'required|string',
+            'soal_6' => 'required|string',
+            'soal_7' => 'required|string',
+            'soal_8' => 'required|string',
+            'soal_9' => 'required|string',
+            'soal_10' => 'required|string',
+        ]);
+
+        //hitung skor berdasarkan jawaban yang benar
+        $answers = [
+            'soal_1' => 'B',
+            'soal_2' => 'C',
+            'soal_3' => 'C',
+            'soal_4' => 'B',
+            'soal_5' => 'B',
+            'soal_6' => 'A',
+            'soal_7' => 'C',
+            'soal_8' => 'B',
+            'soal_9' => 'C',
+            'soal_10' => 'A',
+        ];
+
+        $score = 0;
+        foreach ($answers as $key => $correctAnswer) {
+            if ($validated[$key] === $correctAnswer) {
+                $score += 10;
+            }
+        }
+
+        Ipa::create([
+            'id_user' => auth()->id(),
+            'name_user' => auth()->user()->name,
+            'soal_1' => $validated['soal_1'],
+            'soal_2' => $validated['soal_2'],
+            'soal_3' => $validated['soal_3'],
+            'soal_4' => $validated['soal_4'],
+            'soal_5' => $validated['soal_5'],
+            'soal_6' => $validated['soal_6'],
+            'soal_7' => $validated['soal_7'],
+            'soal_8' => $validated['soal_8'],
+            'soal_9' => $validated['soal_9'],
+            'soal_10' => $validated['soal_10'],
+            'value_result' => $score,
+        ]);
+
+        return redirect()->route('result_value')->with('finish', "Jika selesai klik selesai");
     }
 
     // untuk soal IPS
@@ -138,15 +202,62 @@ class UsersController extends Controller
         return view('users.soal_ips', $data);
     }
 
-    // untuk menampilkan hasil nilai user setelah ujian
-    public function result_value()
+    public function  proses_selesai_ujian_soal_ips(Request $request)
     {
-        $data = array(
-            'title' => 'Hasil Nilai Quiz App',
-        );
+        // Validasi input
+        $validated = $request->validate([
+            'soal_1' => 'required|string',
+            'soal_2' => 'required|string',
+            'soal_3' => 'required|string',
+            'soal_4' => 'required|string',
+            'soal_5' => 'required|string',
+            'soal_6' => 'required|string',
+            'soal_7' => 'required|string',
+            'soal_8' => 'required|string',
+            'soal_9' => 'required|string',
+            'soal_10' => 'required|string',
+        ]);
 
-        return view('users.result_value', $data);
+        //hitung skor berdasarkan jawaban yang benar
+        $answers = [
+            'soal_1' => 'B',
+            'soal_2' => 'D',
+            'soal_3' => 'C',
+            'soal_4' => 'B',
+            'soal_5' => 'C',
+            'soal_6' => 'C',
+            'soal_7' => 'B',
+            'soal_8' => 'C',
+            'soal_9' => 'B',
+            'soal_10' => 'A',
+        ];
+
+        $score = 0;
+        foreach ($answers as $key => $correctAnswer) {
+            if ($validated[$key] === $correctAnswer) {
+                $score += 10;
+            }
+        }
+
+        Ips::create([
+            'id_user' => auth()->id(),
+            'name_user' => auth()->user()->name,
+            'soal_1' => $validated['soal_1'],
+            'soal_2' => $validated['soal_2'],
+            'soal_3' => $validated['soal_3'],
+            'soal_4' => $validated['soal_4'],
+            'soal_5' => $validated['soal_5'],
+            'soal_6' => $validated['soal_6'],
+            'soal_7' => $validated['soal_7'],
+            'soal_8' => $validated['soal_8'],
+            'soal_9' => $validated['soal_9'],
+            'soal_10' => $validated['soal_10'],
+            'value_result' => $score,
+        ]);
+
+        return redirect()->route('result_value')->with('finish', "Jika selesai klik selesai");
     }
+
 
     // menampilkan nilai history ujian user
     public function history_value_users()

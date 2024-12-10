@@ -31,6 +31,20 @@ document.addEventListener("DOMContentLoaded", function () {
             text: errorMessage.dataset.message,
         });
     }
+
+    //untuk peringatan sudah selesai ujian atau belom pada soal ipa dan ips
+    const examFinishMessage = document.getElementById("exam-finish-message");
+    if (examFinishMessage) {
+        Swal.fire({
+            title: "Selesai Ujian",
+            text: examFinishMessage.dataset.message,
+            icon: "success",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Selesai",
+        });
+    }
 });
 
 //view password pada login
@@ -82,4 +96,3 @@ const nameMonth = [
 ];
 const dateDisplay = document.getElementById("dateDisplay");
 dateDisplay.textContent = `${nameDay[day]}, ${date} ${nameMonth[month]} ${year}`;
-

@@ -22,7 +22,7 @@
 
     {{-- alert success berhasil buat akun --}}
     @if(session('success'))
-    <div id="success-message" data-message="{{ session('success') }}"></div>
+      <div id="success-message" data-message="{{ session('success') }}"></div>
     @endif
 
     {{-- alert jika gagal login --}}

@@ -43,17 +43,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change_password_user', [UsersController::class, 'change_password_user'])->name('change_password_user');
     Route::get('/change_profile_user', [UsersController::class, 'change_profile_user'])->name('change_profile_user');
     Route::get('/history_value_users', [UsersController::class, 'history_value_users'])->name('history_value_users');
+    //tampilan halaman user saat mendapatkan hasil nilai 
     Route::get('/result_value', [UsersController::class, 'result_value'])->name('result_value');
-   
+
+
     //bagian saat klik mulai quiz    
     Route::get('/soal_ipa', [UsersController::class, 'soal_ipa'])->name('soal_ipa');
     Route::get('/soal_ips', [UsersController::class, 'soal_ips'])->name('soal_ips');
-    
+
     //proses for user untuk change profile dan password
     Route::post('/proses_change_profile_user/{id}', [UsersController::class, 'proses_change_profile_user'])->name('proses_change_profile_user');
     Route::post('/proses_change_password_user/{id}', [UsersController::class, 'proses_change_password_user'])->name('proses_change_password_user');
-    
-
+    Route::post('/proses_selesai_ujian_soal_ipa', [UsersController::class, 'proses_selesai_ujian_soal_ipa'])->name('proses_selesai_ujian_soal_ipa');
 });
 
 //untuk admin

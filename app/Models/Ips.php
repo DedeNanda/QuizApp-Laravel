@@ -9,6 +9,8 @@ class Ips extends Model
 {
     use HasFactory;
 
+    protected $table = 'soal_ips';
+
     protected $fillable = [
         'id_user',
         'name_user',
@@ -25,6 +27,15 @@ class Ips extends Model
         'value_result',
     ];
 
+
+
+    //untuk mengambil data id dari user  
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
+
+    //untuk join data ke model InfoPassed
     public function infopassedfromips()
     {
         return $this->hasMany(InfoPassed::class, 'id_soal', 'id');
