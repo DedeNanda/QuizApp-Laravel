@@ -13,9 +13,9 @@
   
   {{-- Pilihan ganda IPA --}}
 <div class="choose-soal">
-  <h1>ini soal IPA</h1>
+  <h1>Soal IPA</h1>
 
-    <form action="{{ route('proses_selesai_ujian_soal_ipa') }}" method="POST" id="finish-form"> 
+    <form action="{{ route('proses_selesai_ujian_soal_ipa') }}" method="POST">
       {{ csrf_field() }}
 
       <!-- Soal 1 -->
@@ -85,7 +85,7 @@
       <div class="soal">
         <h3>8. Gas yang diperlukan tumbuhan untuk fotosintesis adalah...</h3>
         <label><input type="radio" name="soal_8" value="A"> A. Oksigen</label><br>
-        <label><input type="radio" name="soal_8" value="B"> B. Karbon dioksida (ini jawabannya)</label><br>
+        <label><input type="radio" name="soal_8" value="B"> B. Karbon dioksida</label><br>
         <label><input type="radio" name="soal_8" value="C"> C. Nitrogen</label><br>
         <label><input type="radio" name="soal_8" value="D"> D. Hidrogen</label>
       </div>

@@ -115,17 +115,6 @@ class UsersController extends Controller
         return redirect()->back()->with('success', 'Prrofil berhasil diperbarui.');
     }
 
-
-    // untuk menampilkan hasil nilai user setelah ujian
-    public function result_value()
-    {
-        $data = array(
-            'title' => 'Hasil Nilai Quiz App',
-        );
-
-        return view('users.result_value', $data);
-    }
-
     // untuk soal IPA
     public function soal_ipa()
     {
@@ -173,7 +162,8 @@ class UsersController extends Controller
             }
         }
 
-        Ipa::create([
+        //simpan ke database
+        $ipa = Ipa::create([
             'id_user' => auth()->id(),
             'name_user' => auth()->user()->name,
             'soal_1' => $validated['soal_1'],
@@ -189,8 +179,22 @@ class UsersController extends Controller
             'value_result' => $score,
         ]);
 
-        return redirect()->route('result_value')->with('finish', "Jika selesai klik selesai");
+        //Redirect ke halaman result_value_ipa dengan dengan id
+        return redirect()->route('result_value_ipa', ['id' => $ipa->id])->with('finish', "Jika selesai klik selesai");
     }
+
+    // untuk menampilkan hasil nilai user setelah ujian dari mapel Ipa
+    public function result_value_ipa($id)
+    {
+        $data = array(
+            'title' => 'Hasil Nilai Quiz App',
+        );
+
+        $result = Ipa::findOrFail($id);
+
+        return view('users.result_value_ipa', compact('result'), $data);
+    }
+
 
     // untuk soal IPS
     public function soal_ips()
@@ -239,7 +243,8 @@ class UsersController extends Controller
             }
         }
 
-        Ips::create([
+        //simpan ke database
+        $ips = Ips::create([
             'id_user' => auth()->id(),
             'name_user' => auth()->user()->name,
             'soal_1' => $validated['soal_1'],
@@ -255,7 +260,21 @@ class UsersController extends Controller
             'value_result' => $score,
         ]);
 
-        return redirect()->route('result_value')->with('finish', "Jika selesai klik selesai");
+        //Redirect ke halaman result_value_ipa dengan dengan id
+        return redirect()->route('result_value_ips', ['id' => $ips->id])->with('finish', "Jika selesai klik selesai");
+    }
+
+
+    // untuk menampilkan hasil nilai user setelah ujian dari mapel Ips
+    public function result_value_ips($id)
+    {
+        $data = array(
+            'title' => 'Hasil Nilai Quiz App',
+        );
+
+        $result = Ips::findOrFail($id);
+
+        return view('users.result_value_ips', compact('result'), $data);
     }
 
 

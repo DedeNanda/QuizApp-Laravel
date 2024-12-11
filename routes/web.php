@@ -43,8 +43,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/change_password_user', [UsersController::class, 'change_password_user'])->name('change_password_user');
     Route::get('/change_profile_user', [UsersController::class, 'change_profile_user'])->name('change_profile_user');
     Route::get('/history_value_users', [UsersController::class, 'history_value_users'])->name('history_value_users');
-    //tampilan halaman user saat mendapatkan hasil nilai 
-    Route::get('/result_value', [UsersController::class, 'result_value'])->name('result_value');
+
+    //tampilan halaman user saat mendapatkan hasil nilai dari mapel Ipa dan Ips 
+    Route::get('/result_value_ips/{id}', [UsersController::class, 'result_value_ips'])->name('result_value_ips');
+    Route::get('/result_value_ipa/{id}', [UsersController::class, 'result_value_ipa'])->name('result_value_ipa');
 
 
     //bagian saat klik mulai quiz    
@@ -55,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/proses_change_profile_user/{id}', [UsersController::class, 'proses_change_profile_user'])->name('proses_change_profile_user');
     Route::post('/proses_change_password_user/{id}', [UsersController::class, 'proses_change_password_user'])->name('proses_change_password_user');
     Route::post('/proses_selesai_ujian_soal_ipa', [UsersController::class, 'proses_selesai_ujian_soal_ipa'])->name('proses_selesai_ujian_soal_ipa');
+    Route::post('/proses_selesai_ujian_soal_ips', [UsersController::class, 'proses_selesai_ujian_soal_ips'])->name('proses_selesai_ujian_soal_ips');
 });
 
 //untuk admin

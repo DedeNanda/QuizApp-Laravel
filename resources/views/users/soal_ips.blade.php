@@ -12,9 +12,9 @@
 <body>
   {{-- Pilihan ganda IPS --}}
 <div class="choose-soal">
-  <h1>ini soal IPS</h1>
+  <h1>Soal IPS</h1>
 
-    <form action="#" method="POST">
+    <form action="{{ route('proses_selesai_ujian_soal_ips') }}" method="POST">
       {{ csrf_field() }}
 
       <!-- Soal 1 -->
@@ -85,7 +85,7 @@
         <h3>8. Negara yang dikenal sebagai “Negeri Tirai Bambu” adalah...</h3>
         <label><input type="radio" name="soal_8" value="A"> A. Jepang</label><br>
         <label><input type="radio" name="soal_8" value="B"> B. Korea Selatan</label><br>
-        <label><input type="radio" name="soal_8" value="C"> C. Tiongkok (ini jawabanya)</label><br>
+        <label><input type="radio" name="soal_8" value="C"> C. Tiongkok</label><br>
         <label><input type="radio" name="soal_8" value="D"> D. Vietnam</label>
       </div>
 
