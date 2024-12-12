@@ -397,6 +397,63 @@ img.rounded-circle {
     background: #45a049;
 }
 
+/* bagian history_value_user */
+.history-value-user {
+    background: #ffffff;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+}
+
+.history-value-user h2 {
+    color: #333;
+    margin: 10px 0;
+}
+
+.history-value-user table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.history-value-user th,
+.history-value-user td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.history-value-user th {
+    background-color: #4caf50;
+    color: white;
+}
+
+.history-value-user td {
+    background-color: #f9f9f9;
+}
+
+.history-value-user a {
+    text-decoration: none;
+}
+
+.history-value-user button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.history-value-user button:hover {
+    background-color: #45a049;
+}
+
 /* alert jika passowrd salah */
 .alert {
     margin-top: 5px;
