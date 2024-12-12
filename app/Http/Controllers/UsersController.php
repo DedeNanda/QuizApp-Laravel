@@ -7,6 +7,7 @@ use App\Models\Ipa;
 use App\Models\Ips;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -285,6 +286,10 @@ class UsersController extends Controller
             'title' => 'History Nilai Ujian',
         );
 
-        return view('users.history_value_users', $data);
+        $id_user = Auth::id();
+        $history_ips = Ips::where('id_user', $id_user)->first();
+        $history_ipa = Ipa::where('id_user', $id_user)->first();
+
+        return view('users.history_value_users', compact('history_ipa', 'history_ips'), $data);
     }
 }
