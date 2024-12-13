@@ -7,6 +7,7 @@ use App\Models\Ipa;
 use App\Models\Ips;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -287,9 +288,17 @@ class UsersController extends Controller
         );
 
         $id_user = Auth::id();
-        $history_ips = Ips::where('id_user', $id_user)->first();
-        $history_ipa = Ipa::where('id_user', $id_user)->first();
 
-        return view('users.history_value_users', compact('history_ipa', 'history_ips'), $data);
+        // Gabungkan data dengan urutan terbaru berdasarkan kolom created_at
+        $history = Ips::where('id_user', $id_user)
+            ->select('value_result', DB::raw("'IPS' as mata_pelajaran"), 'created_at')
+            ->unionAll(
+                Ipa::where('id_user', $id_user)
+                    ->select('value_result', DB::raw("'IPA' as mata_pelajaran"), 'created_at')
+            )
+            ->orderBy('created_at', 'desc') // Urutkan berdasarkan created_at terbaru
+            ->paginate(5); // Pagination untuk semua data
+
+        return view('users.history_value_users', compact('history'), $data);
     }
 }
