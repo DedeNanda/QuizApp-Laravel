@@ -454,11 +454,67 @@ img.rounded-circle {
     background-color: #45a049;
 }
 
+.styled-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 25px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+.styled-table tr:nth-child(even) {
+    background-color: #f3f3f3;
+}
+.styled-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Pagination */
+.pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.pagination-wrapper .page-item {
+    margin: 0 5px;
+}
+.pagination-wrapper .page-link {
+    color: #009879;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+.pagination-wrapper .page-link:hover {
+    background-color: #f1f1f1;
+}
+.pagination-wrapper .page-item.active .page-link {
+    background-color: #009879;
+    color: #fff;
+    border: 1px solid #009879;
+}
+
 /* alert jika passowrd salah */
 .alert {
     margin-top: 5px;
     font-size: 12px;
     color: #d9534f;
+}
+
+/* untuk tidak ada laporan alias empty */
+.alert-history {
+    font-size: 40px;
+    font-weight: bold;
 }
 
 /* bagian footer */

@@ -69,3 +69,10 @@ input[type="radio"] {
 .save-btn:hover {
     background-color: #45a049;
 }
+
+/* bagian timer IPA dan IPS */
+.timer-container {
+    font-size: 20px;
+    font-weight: bold;
+    color: red;
+}
