@@ -34,9 +34,4 @@ class Ipa extends Model
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
-    //untuk join data model ke InfoPassed
-    public function infopassedfromipa()
-    {
-        return $this->hasMany(InfoPassed::class, 'id_soal', 'id');
-    }
 }

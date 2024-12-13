@@ -34,10 +34,4 @@ class Ips extends Model
     {
         return $this->belongsTo(User::class, 'id_user', 'id');
     }
-
-    //untuk join data ke model InfoPassed
-    public function infopassedfromips()
-    {
-        return $this->hasMany(InfoPassed::class, 'id_soal', 'id');
-    }
 }
