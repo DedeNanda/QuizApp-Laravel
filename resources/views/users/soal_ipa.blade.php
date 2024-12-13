@@ -15,6 +15,10 @@
 <div class="choose-soal">
   <h1>Soal IPA</h1>
 
+  <div class="timer-container">
+    <p id="timer_ipa" style="font-size: 20px; font-weight: bold; color: red;">Waktu Tersisa: 15:00</p>
+  </div>
+
     <form action="{{ route('proses_selesai_ujian_soal_ipa') }}" method="POST">
       {{ csrf_field() }}
 
@@ -116,6 +120,37 @@
     <script src="{{ asset("js/script.js") }}"></script>
     {{-- bawah ini untuk sweet alert --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
+    {{-- bagian bawah ini untuk script waktu habis --}}
+    <script>
+    // Waktu mundur dalam detik (contoh: 15 menit = 900 detik)
+    let countdownTime = 900;
+
+    // Fungsi format waktu
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = seconds % 60;
+        return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+    }
+
+    // Update timer di halaman
+    function updateTimer() {
+        const timerElement = document.getElementById("timer_ipa");
+        timerElement.textContent = `Waktu Tersisa: ${formatTime(countdownTime)}`;
+        countdownTime--;
+
+        // Jika waktu habis, arahkan ke halaman selesai
+        if (countdownTime < 0) {
+            clearInterval(timerInterval);
+            alert("Waktu habis! Anda akan diarahkan ke halaman selesai.");
+            window.location.href = "{{ route('proses_selesai_ujian_soal_ipa') }}"; // Redirect ke halaman selesai
+        }
+    }
+
+    // Panggil updateTimer setiap 1 detik
+    const timerInterval = setInterval(updateTimer, 1000);
+    </script>
 </body>
 </html>
 
