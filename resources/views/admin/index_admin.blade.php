@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="{{ asset("image/icon.png") }}" type="image/x-icon">
     <title>ini admin</title>
+
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 </head>
 <body>
     <div class="sidebar">
@@ -20,10 +22,19 @@
         </ul>
     </div>
     <div class="main">
-        <div class="header">
+        <div class="header d-flex align-items-center">
             <h1>Welcome, Admin</h1>
             <div class="search-bar">
                 <input type="text" placeholder="Search...">
+            </div>
+            <div class="profile-dropdown ms-3">
+                <img src="https://via.placeholder.com/50" alt="Admin" data-bs-toggle="dropdown" aria-expanded="false">
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Change Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                </ul>
             </div>
         </div>
         <div class="cards">
@@ -46,105 +57,6 @@
         </div>
     </div>
 
-    <style>
-         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            display: flex;
-            min-height: 100vh;
-            background-color: #f4f4f9;
-        }
-
-        .sidebar {
-            width: 250px;
-            background: #1e1e2f;
-            color: #fff;
-            padding: 20px 10px;
-        }
-
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-        }
-
-        .sidebar ul {
-            list-style: none;
-        }
-
-        .sidebar ul li {
-            margin: 15px 0;
-        }
-
-        .sidebar ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1rem;
-            padding: 10px 15px;
-            display: block;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .sidebar ul li a:hover {
-            background: #3d3d63;
-        }
-
-        .main {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #fff;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-        }
-
-        .header .search-bar {
-            flex: 1;
-            margin-left: 20px;
-        }
-
-        .header .search-bar input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .card h3 {
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-
-        .card p {
-            color: #555;
-        }
-    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
