@@ -11,7 +11,7 @@ class AdminController extends Controller
     {
 
         $data = array(
-            'title' => 'Welcome Quiz App',
+            'title' => 'Welcome Admin',
         );
 
         return view('admin.index_admin', $data);
