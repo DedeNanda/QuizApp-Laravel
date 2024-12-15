@@ -16,4 +16,16 @@ class AdminController extends Controller
 
         return view('admin.index_admin', $data);
     }
+
+
+    //tampilan change password admin
+    public function change_password_admin()
+    {
+
+        $data = array(
+            'title' => 'Change Password Admin',
+        );
+
+        return view('admin.change_password_admin', $data);
+    }
 }
