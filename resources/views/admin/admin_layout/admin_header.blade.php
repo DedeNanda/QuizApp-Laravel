@@ -26,11 +26,9 @@
         <h2>Admin Panel</h2>
         <ul>
             <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Users</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#">Nilai Ujian IPA</a></li>
+            <li><a href="#">Nilai Ujian IPS</a></li>
+            <li><a href="#">Melihat User</a></li>
         </ul>
     </div>
     <div class="main">
@@ -42,7 +40,7 @@
                     <li><a class="dropdown-item" href="#">Change Profile</a></li>
                     <li><a class="dropdown-item" href="#">Change Password</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Log Out</a></li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}">Log Out</a></li>
                 </ul>
             </div>
         </div>
