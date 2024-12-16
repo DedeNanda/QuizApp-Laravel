@@ -23,24 +23,44 @@
 </head>
 <body>
     <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <ul>
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Nilai Ujian IPA</a></li>
-            <li><a href="#">Nilai Ujian IPS</a></li>
-            <li><a href="#">Melihat User</a></li>
+        <h2>Admin Page</h2>
+        <ul class="list-unstyled">
+            <li>
+                <a class="d-flex align-items-center gap-2" href="{{ route('halaman_admin') }}">
+                    <box-icon name='dashboard' type='solid' color='#ffffff' ></box-icon>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a class="d-flex align-items-center gap-2" href="{{ route('nilai_ujian_ipa') }}">
+                    <box-icon name='book' type='solid' color='#ffffff' ></box-icon>
+                    Nilai Ujian IPA
+                </a>
+            </li>
+            <li>
+                <a class="d-flex align-items-center gap-2" href="{{ route('nilai_ujian_ips') }}">
+                    <box-icon name='book' type='solid' color='#ffffff' ></box-icon>
+                    Nilai Ujian IPS
+                </a>
+            </li>
+            <li>
+                <a class="d-flex align-items-center gap-2" href="{{ route('melihat_user') }}">
+                    <box-icon name='user' type='solid' color='#ffffff' ></box-icon>
+                    Melihat User
+                </a>
+            </li>
         </ul>
     </div>
     <div class="main">
         <div class="header d-flex align-items-center">
-            <h1>Welcome, Admin</h1>
+            <h1>Welcome, {{ Auth::user()->name }}</h1>
             <div class="profile-dropdown ms-3">
                 <img src="https://via.placeholder.com/50" alt="Admin" data-bs-toggle="dropdown" aria-expanded="false">
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Change Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Change Password</a></li>
+                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change_profile_admin') }}"><box-icon type='solid' name='user-rectangle'></box-icon> Change Profile</a></li>
+                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change_password_admin') }}"><box-icon name='key'></box-icon> Change Password</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{{ route('logout') }}">Log Out</a></li>
+                    <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('logout') }}"><box-icon name='log-out'></box-icon> Log Out</a></li>
                 </ul>
             </div>
         </div>

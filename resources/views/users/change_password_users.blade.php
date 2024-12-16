@@ -4,7 +4,7 @@
 
 {{-- ganti password user --}}
 
-{{-- alert success berhasil buat akun --}}
+{{-- alert success berhasil change passowrd --}}
 @if(session('success'))
 <div id="success-message-user" data-message="{{ session('success') }}"></div>
 @endif
