@@ -62,5 +62,22 @@ Route::middleware(['auth'])->group(function () {
 
 //untuk admin
 Route::middleware(['auth'])->group(function () {
+
+    //tampilan pada admin
     Route::get('/halaman_admin', [AdminController::class, 'index'])->name('halaman_admin');
+
+    //tampilan pada change password admin
+    Route::get('/change_password_admin', [AdminController::class, 'change_password_admin'])->name('change_password_admin');
+
+    //tampilan pada change profile admin
+    Route::get('/change_profile_admin', [AdminController::class, 'change_profile_admin'])->name('change_profile_admin');
+
+    //tampilan nilai ujian ipa
+    Route::get('/nilai_ujian_ipa', [AdminController::class, 'nilai_ujian_ipa'])->name('nilai_ujian_ipa');
+
+    //tampilan nilai ujian ips
+    Route::get('/nilai_ujian_ips', [AdminController::class, 'nilai_ujian_ips'])->name('nilai_ujian_ips');
+
+    //tampilan melihat user
+    Route::get('/melihat_user', [AdminController::class, 'melihat_user'])->name('melihat_user');
 });
