@@ -1,14 +1,21 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+    --warna1: #dff2eb;
+    --warna2: #aab396;
+    --warna3: #7c93c3;
+    --warna4: #629584;
+    --warna5: #cdc1ff;
 }
 
 body {
     display: flex;
     min-height: 100vh;
     background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter";
 }
 
 .sidebar {
@@ -105,4 +112,204 @@ body {
 .card p {
     font-size: 1rem;
     color: #6c757d;
+}
+
+/* bagian ganti photo user dan admin sama saja */
+
+.change-photo-users {
+    background-color: var(--warna5);
+    width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px var(--warna4);
+    animation: fadeIn 1s ease-out;
+    text-align: center;
+}
+
+.change-photo-users h1 {
+    font-weight: bold;
+    padding-top: 10px;
+    font-size: 2rem;
+    text-shadow: 0 4px 5px var(--warna4);
+}
+
+.profile-photo {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.profile-photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: solid 3px black;
+}
+
+.photo {
+    display: none;
+}
+
+.upload-btn {
+    background-color: var(--warna1);
+    width: 370px;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+    padding-left: 10px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
+
+.form-input {
+    background-color: var(--warna1);
+    width: 370px;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:hover {
+    border-color: #6a11cb;
+    box-shadow: 0 0 8px rgba(106, 17, 203, 0.4);
+    outline: none;
+}
+
+.save-btn {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    font-size: 15px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 1px auto;
+    box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(106, 17, 203, 0.5);
+}
+
+.home-btn {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #6a11cb;
+    transition: color 0.3s ease;
+}
+
+.home-btn:hover {
+    color: #2575fc;
+}
+
+/* bagian change passowrd user dan admin sama aja*/
+
+.change-password-users {
+    width: 100%;
+    margin: 20px auto;
+    max-width: 400px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.change-password-users h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #f9f9f9;
+}
+
+.form-group input:focus {
+    border-color: #6c63ff;
+    background: #ffffff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background: linear-gradient(90deg, #6c63ff, #4a47a3);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(90deg, #4a47a3, #6c63ff);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-home {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #6c63ff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.btn-home:hover {
+    color: #4a47a3;
+}
+
+/* bagian footer */
+footer {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 50px;
 }
