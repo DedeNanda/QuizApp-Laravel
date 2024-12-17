@@ -307,6 +307,85 @@ body {
     color: #4a47a3;
 }
 
+/* tabel nilai pada ipa, ips,dan melihat user */
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: auto;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: var(--warna4);
+    color: #fff;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #eaf6e9;
+}
+
+.btn-aksi {
+    display: inline-block;
+    padding: 2px 2px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.btn-edit {
+    color: #fff;
+    background-color: #4caf50;
+}
+
+.btn-delete {
+    color: #fff;
+    background-color: #f44336;
+}
+
+.btn-edit:hover {
+    background-color: #45a049;
+}
+
+.btn-delete:hover {
+    background-color: #e53935;
+}
+
+/* alert jika passowrd salah */
+.alert {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #d9534f;
+}
+
 /* bagian footer */
 footer {
     text-align: center;
