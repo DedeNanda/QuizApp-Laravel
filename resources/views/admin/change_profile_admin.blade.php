@@ -10,8 +10,7 @@
 
 <div class="change-photo-users">
 <h1>Change Your Profile</h1>
-{{-- {{ route('proses_change_profile_user', Auth::id()) }} --}}
-<form action="#" method="POST" enctype="multipart/form-data" class="profile-form">
+<form action="{{ route('proses_change_profile_admin', Auth::id()) }}" method="POST" enctype="multipart/form-data" class="profile-form">
     {{ csrf_field() }}
     <div class="profile-photo">
         @if(Auth::user()->photo)

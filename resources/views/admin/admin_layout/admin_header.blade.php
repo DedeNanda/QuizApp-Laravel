@@ -55,7 +55,11 @@
         <div class="header d-flex align-items-center">
             <h1>Welcome, {{ Auth::user()->name }}</h1>
             <div class="profile-dropdown ms-3">
-                <img src="https://via.placeholder.com/50" alt="Admin" data-bs-toggle="dropdown" aria-expanded="false">
+                @if(Auth::user()->photo)
+                <img src="{{ asset('uploads/photo_admin/' . Auth::user()->photo) }}" alt="Admin" data-bs-toggle="dropdown" aria-expanded="false">
+                @else
+                <img src="{{ asset('image/user.png') }}" alt="Admin" data-bs-toggle="dropdown" aria-expanded="false">
+                @endif
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change_profile_admin') }}"><box-icon type='solid' name='user-rectangle'></box-icon> Change Profile</a></li>
                     <li><a class="dropdown-item d-flex align-items-center gap-2" href="{{ route('change_password_admin') }}"><box-icon name='key'></box-icon> Change Password</a></li>

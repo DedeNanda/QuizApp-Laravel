@@ -11,8 +11,7 @@
 
 <div class="change-password-users">
   <h1>Change Password</h1>
-  {{-- {{ route('proses_change_password_user', Auth::id()) }} --}}
-  <form action="#" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('proses_change_passowrd_admin', Auth::id()) }}" method="POST" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <!-- Password Lama -->
