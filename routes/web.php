@@ -68,9 +68,14 @@ Route::middleware(['auth'])->group(function () {
 
     //tampilan pada change password admin
     Route::get('/change_password_admin', [AdminController::class, 'change_password_admin'])->name('change_password_admin');
+    //proses change password admn
+    Route::post('/proses_change_passowrd_admin/{id}', [AdminController::class, 'proses_change_passowrd_admin'])->name('proses_change_passowrd_admin');
 
-    //tampilan pada change profile admin
+    //tampilan pada change profile admin 
     Route::get('/change_profile_admin', [AdminController::class, 'change_profile_admin'])->name('change_profile_admin');
+    //proses change profil admin
+    Route::post('/proses_change_profile_admin/{id}', [AdminController::class, 'proses_change_profile_admin'])->name('proses_change_profile_admin');
+
 
     //tampilan nilai ujian ipa
     Route::get('/nilai_ujian_ipa', [AdminController::class, 'nilai_ujian_ipa'])->name('nilai_ujian_ipa');
