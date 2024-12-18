@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ipa;
+use App\Models\Ips;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -111,36 +113,66 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'Prrofil berhasil diperbarui.');
     }
 
-    //tampilan nilai ujian ipa 
+    //tampilan nilai ujian ipa dan database
     public function nilai_ujian_ipa()
     {
+
+        $soal_ipa = Ipa::latest()->paginate(10);
 
         $data = array(
             'title' => 'Nilai Ujian Ipa',
         );
 
-        return view('admin.nilai_ujian_ipa', $data);
+        return view('admin.nilai_ujian_ipa', compact('soal_ipa'), $data);
+    }
+
+    //tampilan dan aksi pada view untuk IPA
+    public function view_nilai_ujian_ipa($id)
+    {
+        $soal_ipa = Ipa::findOrFail($id);
+
+        $data = array(
+            'title' => 'Lihat Nilai IPA'
+        );
+
+        return view('admin.aksi_ipa.view_nilai_ipa', compact('soal_ipa'), $data);
     }
 
     //tampilan nilai ujian ips
     public function nilai_ujian_ips()
     {
+        $soal_ips = Ips::latest()->paginate(10);
 
         $data = array(
             'title' => 'Nilai Ujian Ips',
         );
 
-        return view('admin.nilai_ujian_ips', $data);
+        return view('admin.nilai_ujian_ips', compact('soal_ips'), $data);
+    }
+
+    //tampilan dan aksi pada view untuk IPS
+    public function view_nilai_ujian_ips($id)
+    {
+        $soal_ips = Ips::findOrFail($id);
+
+        $data = array(
+            'title' => 'Lihat Nilai IPS'
+        );
+
+        return view('admin.aksi_ips.view_nilai_ips', compact('soal_ips'), $data);
     }
 
     //tampilan melihat user 
     public function melihat_user()
     {
 
+        //hanya untuk menampil data user saja tidak admin
+        $user = User::where('level', 'user')->paginate(10);
+
         $data = array(
             'title' => 'Melihat User',
         );
 
-        return view('admin.melihat_user', $data);
+        return view('admin.melihat_user', compact('user'), $data);
     }
 }
