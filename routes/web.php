@@ -79,9 +79,11 @@ Route::middleware(['auth'])->group(function () {
 
     //tampilan nilai ujian ipa
     Route::get('/nilai_ujian_ipa', [AdminController::class, 'nilai_ujian_ipa'])->name('nilai_ujian_ipa');
+    Route::get('/view_nilai_ujian_ipa/{id}', [AdminController::class, 'view_nilai_ujian_ipa'])->name('view_nilai_ujian_ipa');
 
     //tampilan nilai ujian ips
     Route::get('/nilai_ujian_ips', [AdminController::class, 'nilai_ujian_ips'])->name('nilai_ujian_ips');
+    Route::get('/view_nilai_ujian_ips/{id}', [AdminController::class, 'view_nilai_ujian_ips'])->name('view_nilai_ujian_ips');
 
     //tampilan melihat user
     Route::get('/melihat_user', [AdminController::class, 'melihat_user'])->name('melihat_user');
