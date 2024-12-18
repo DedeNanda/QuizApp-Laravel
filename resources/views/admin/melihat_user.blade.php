@@ -12,24 +12,36 @@
             <tr>
                 <th>No</th>
                 <th>Nama</th>
-                <th>Nilai</th>
-                <th>Kategori</th>
+                <th>Email</th>
+                <th>Photo</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
+        @forelse($user as $index => $user)
             <tr>
-                <td>1</td>
-                <td>Ahmad</td>
-                <td>85</td>
-                <td>Lulus</td>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
                 <td>
-                    <a href="#" class="btn-aksi btn-view">view</a>
-                    <a href="#" class="btn-aksi btn-view">print</a>
+                @if($user->photo)
+                    <img src="{{ asset('uploads/photo_users/' . $user->photo) }}" alt="Photo" style="width: 100px; height: auto;">
+                @else
+                    Tidak ada photo
+                @endif
+                </td>
+                <td>
+                    {{-- untuk semua aksi pada folder aksi_user --}}
+                    <a href="#" class="btn-aksi btn-view"><box-icon name='show' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="#" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
                     <a href="#" class="btn-aksi btn-delete"><box-icon name='trash-alt' type='solid' color='#ffffff' ></box-icon></a>
                 </td>
             </tr>
+            @empty
+            <div class="alert-history">
+                Belum ada ujian Ipa.
+            </div>
+            @endforelse
         </tbody>
     </table>
 </div>

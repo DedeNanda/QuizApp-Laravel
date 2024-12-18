@@ -18,20 +18,37 @@
             </tr>
         </thead>
         <tbody>
+        @forelse($soal_ips as $index => $ips)
             <tr>
-                <td>1</td>
-                <td>Ahmad</td>
-                <td>85</td>
-                <td>Lulus</td>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $ips->name_user }}</td>
+                <td>{{ $ips->value_result }}</td>
+                <td> 
+                    @if ($ips->value_result >= 75)
+                        Lulus
+                    @else
+                        Tidak Lulus
+                    @endif
+                </td>
                 <td>
-                     <a href="#" class="btn-aksi btn-view">view</a>
-                     <a href="#" class="btn-aksi btn-view">print</a>
-                     <a href="#" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
-                     <a href="#" class="btn-aksi btn-delete"><box-icon name='trash-alt' type='solid' color='#ffffff' ></box-icon></a>
+                    {{-- untuk semua aksi pada folder aksi_ips --}}
+                    <a href="#" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
+                    <a href="{{ route('view_nilai_ujian_ips', $ips->id) }}" class="btn-aksi btn-view"><box-icon name='show' type='solid' color='#ffffff' ></box-icon></a>
+                    <a href="#" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
+                    <a href="#" class="btn-aksi btn-delete"><box-icon name='trash-alt' type='solid' color='#ffffff' ></box-icon></a>
                 </td>
             </tr>
+            @empty
+            <div class="alert-history">
+                Belum ada ujian Ipa.
+            </div>
+        @endforelse
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{-- buat $soal_ips karena dia tidak masuk forelse --}}
+        {{ $soal_ips->links('pagination::bootstrap-4') }}
+    </div>
 </div>
 
 {{-- bawah ini menampilkan footer --}}
