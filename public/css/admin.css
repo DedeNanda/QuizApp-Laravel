@@ -361,18 +361,32 @@ tbody tr:hover {
     transition: background-color 0.3s;
 }
 
-.btn-edit {
-    color: #fff;
-    background-color: #4caf50;
+.btn-print {
+    background-color: #0d92f4;
 }
 
-.btn-delete {
-    color: #fff;
-    background-color: #f44336;
+.btn-print:hover {
+    background-color: #1f509a;
+}
+
+.btn-view {
+    background-color: #1f509a;
+}
+
+.btn-view:hover {
+    background-color: #0d92f4;
+}
+
+.btn-edit {
+    background-color: #fab12f;
 }
 
 .btn-edit:hover {
-    background-color: #45a049;
+    background-color: #ff8000;
+}
+
+.btn-delete {
+    background-color: #f44336;
 }
 
 .btn-delete:hover {
@@ -384,6 +398,12 @@ tbody tr:hover {
     margin-top: 5px;
     font-size: 12px;
     color: #d9534f;
+}
+
+/* untuk tidak ada laporan alias empty */
+.alert-history {
+    font-size: 40px;
+    font-weight: bold;
 }
 
 /* bagian footer */
