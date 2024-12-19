@@ -45,6 +45,18 @@ document.addEventListener("DOMContentLoaded", function () {
             confirmButtonText: "Selesai",
         });
     }
+
+    //pesan untuk edit pada nilai IPA dan IPS success
+    const successMessageEdit = document.getElementById("success-message-edit");
+    if (successMessageEdit) {
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: successMessageEdit.dataset.message,
+            showConfirmButton: false,
+            timer: 1500,
+        });
+    }
 });
 
 //view password pada login
