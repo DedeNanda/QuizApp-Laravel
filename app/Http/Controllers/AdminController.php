@@ -138,6 +138,48 @@ class AdminController extends Controller
         return view('admin.aksi_ipa.view_nilai_ipa', compact('soal_ipa'), $data);
     }
 
+    //tampilan dan aksi pada edit untuk IPA
+    public function edit_nilai_ujian_ipa($id)
+    {
+        $soal_ipa = Ipa::findOrFail($id);
+
+        $data = array(
+            'title' => 'Lihat Nilai IPA'
+        );
+
+        return view('admin.aksi_ipa.edit_nilai_ipa', compact('soal_ipa'), $data);
+    }
+
+    //proses edit untuk IPA
+    public function proses_edit_nilai_ujian_ipa(Request $request, $id)
+    {
+        $soal_ipa = Ipa::findOrFail($id);
+
+        // Daftar kunci jawaban
+        $kunciJawaban = ['B', 'C', 'C', 'B', 'B', 'A', 'C', 'B', 'C', 'A'];
+
+        $correctCount = 0; // Inisialisasi jumlah jawaban benar
+
+        // Loop melalui semua jawaban yang dikirim
+        foreach ($request->jawaban as $index => $jawaban) {
+            $soalField = 'soal_' . $index;
+            $soal_ipa->$soalField = $jawaban;
+
+            // Cek apakah jawaban benar
+            if ($jawaban === $kunciJawaban[$index - 1]) {
+                $correctCount++;
+            }
+        }
+
+        // Perbarui nilai berdasarkan jumlah jawaban benar
+        $soal_ipa->value_result = $correctCount * 10; // Misalnya, setiap jawaban benar bernilai 10
+
+        // Simpan perubahan
+        $soal_ipa->save();
+
+        return redirect()->route('nilai_ujian_ipa')->with('success', 'Jawaban berhasil diperbarui!');
+    }
+
     //tampilan nilai ujian ips
     public function nilai_ujian_ips()
     {
