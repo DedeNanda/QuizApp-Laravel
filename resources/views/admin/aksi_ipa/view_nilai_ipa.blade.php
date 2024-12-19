@@ -43,56 +43,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>{{ $soal_ipa->soal_1}}</td>
-                <td>B</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>{{ $soal_ipa->soal_2}}</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>{{ $soal_ipa->soal_3}}</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>{{ $soal_ipa->soal_4}}</td>
-                <td>B</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>{{ $soal_ipa->soal_5}}</td>
-                <td>B</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>{{ $soal_ipa->soal_6}}</td>
-                <td>A</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>{{ $soal_ipa->soal_7}}</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>{{ $soal_ipa->soal_8}}</td>
-                <td>B</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>{{ $soal_ipa->soal_9}}</td>
-                <td>C</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>{{ $soal_ipa->soal_10}}</td>
-                <td>A</td>
-            </tr>
+        @php
+        $kunciJawaban = ['B', 'C', 'C', 'B', 'B', 'A', 'C', 'B', 'C', 'A'];
+        @endphp
+        @foreach ($kunciJawaban as $index => $kunci)
+        <tr>
+            <td>{{ $index + 1 }}</td>
+            <td style="color: {{ $soal_ipa->{'soal_' . ($index + 1)} === $kunci ? 'black' : 'red' }}">
+                {{ $soal_ipa->{'soal_' . ($index + 1)} }}
+            </td>
+            <td>{{ $kunci }}</td>
+        </tr>
+        @endforeach
         </tbody>
     </table>
 </div>

@@ -7,7 +7,7 @@
 {{-- boxicon --}}
 <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
-{{-- jangan lupa pakai sweet alert --}}
+{{--  sweet alert --}}
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {{-- js --}}

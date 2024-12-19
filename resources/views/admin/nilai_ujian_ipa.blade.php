@@ -4,6 +4,12 @@
 @section('content')
 {{-- isi conten lanjutan dari header --}}
 
+{{-- Modal keluar saat berhasil edit --}}
+{{-- modal saat berhasil edit --}}
+@if(session('success'))
+    <div id="success-message-edit" data-message="{{ session('success') }}"></div>
+@endif
+
 <h1 class="title">Tabel Nilai Mapel IPA</h1>
 
 <div class="table-container">
@@ -34,7 +40,7 @@
                     {{-- untuk semua aksi pada folder aksi_ipa --}}
                     <a href="#" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="{{ route('view_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-view"><box-icon name='show' type='solid' color='#ffffff' ></box-icon></a>
-                    <a href="#" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
+                    <a href="{{ route('edit_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
                     <a href="#" class="btn-aksi btn-delete"><box-icon name='trash-alt' type='solid' color='#ffffff' ></box-icon></a>
                 </td>
             </tr>
