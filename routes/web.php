@@ -80,6 +80,8 @@ Route::middleware(['auth'])->group(function () {
     //tampilan nilai ujian ipa
     Route::get('/nilai_ujian_ipa', [AdminController::class, 'nilai_ujian_ipa'])->name('nilai_ujian_ipa');
     Route::get('/view_nilai_ujian_ipa/{id}', [AdminController::class, 'view_nilai_ujian_ipa'])->name('view_nilai_ujian_ipa');
+    Route::get('/edit_nilai_ujian_ipa/{id}', [AdminController::class, 'edit_nilai_ujian_ipa'])->name('edit_nilai_ujian_ipa');
+    Route::put('/proses_edit_nilai_ujian_ipa/{id}', [AdminController::class, 'proses_edit_nilai_ujian_ipa'])->name('proses_edit_nilai_ujian_ipa');
 
     //tampilan nilai ujian ips
     Route::get('/nilai_ujian_ips', [AdminController::class, 'nilai_ujian_ips'])->name('nilai_ujian_ips');
