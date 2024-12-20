@@ -387,6 +387,7 @@ tbody tr:hover {
 
 .btn-delete {
     background-color: #f44336;
+    border: none;
 }
 
 .btn-delete:hover {
