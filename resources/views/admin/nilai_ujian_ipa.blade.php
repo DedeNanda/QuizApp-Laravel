@@ -20,6 +20,7 @@
                 <th>Nama</th>
                 <th>Nilai</th>
                 <th>Kategori</th>
+                <th>Waktu Ujian</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -36,12 +37,23 @@
                         Tidak Lulus
                     @endif
                 </td>
+                <td>{{ \Carbon\Carbon::parse($ipa->created_at)->translatedFormat('d F Y') }}</td>
                 <td>
+                    {{-- pada id="form-delete" itu terdapat pada js nanti di inisiasi" --}}
+                    <form action="{{ route('destroy_nilai_ujian_ipa', $ipa->id) }}" method="POST" id="form-delete">
+
                     {{-- untuk semua aksi pada folder aksi_ipa --}}
-                    <a href="#" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
+                    <a href="{{ route('print_nilai_ujian_ipa_user', $ipa->id) }}" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="{{ route('view_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-view"><box-icon name='show' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="{{ route('edit_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
-                    <a href="#" class="btn-aksi btn-delete"><box-icon name='trash-alt' type='solid' color='#ffffff' ></box-icon></a>
+                    {{-- dibawah ini untuk delete pada aksi ipa --}}
+
+                    @csrf
+                    @method('DELETE')
+                    <button type="button" class="btn-aksi btn-delete" id="delete-button">
+                        <box-icon name='trash-alt' type='solid' color='#ffffff'></box-icon>
+                    </button>
+                    </form>
                 </td>
             </tr>
             @empty

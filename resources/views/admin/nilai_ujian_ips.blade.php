@@ -14,6 +14,7 @@
                 <th>Nama</th>
                 <th>Nilai</th>
                 <th>Kategori</th>
+                <th>Waktu Ujian</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                         Tidak Lulus
                     @endif
                 </td>
+                <td>{{ \Carbon\Carbon::parse($ips->created_at)->translatedFormat('d F Y') }}</td>
                 <td>
                     {{-- untuk semua aksi pada folder aksi_ips --}}
                     <a href="#" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
