@@ -57,6 +57,30 @@ document.addEventListener("DOMContentLoaded", function () {
             timer: 1500,
         });
     }
+
+    //pesan untuk delete pada nilai IPA dan IPS
+    const deleteButton = document.getElementById("delete-button");
+    const formDelete = document.getElementById("form-delete");
+
+    if (deleteButton && formDelete) {
+        deleteButton.addEventListener("click", function (e) {
+            e.preventDefault();
+            Swal.fire({
+                title: "Apakah Anda yakin?",
+                text: "Data yang dihapus tidak dapat dikembalikan!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Ya, hapus!",
+                cancelButtonText: "Batal",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    formDelete.submit(); // Kirim form jika konfirmasi OK
+                }
+            });
+        });
+    }
 });
 
 //view password pada login
