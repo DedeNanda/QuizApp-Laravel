@@ -6,6 +6,7 @@ use App\Models\Ipa;
 use App\Models\Ips;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -178,6 +179,31 @@ class AdminController extends Controller
         $soal_ipa->save();
 
         return redirect()->route('nilai_ujian_ipa')->with('success', 'Jawaban berhasil diperbarui!');
+    }
+
+    //hapus nilai ujian IPA
+    public function destroy_nilai_ujian_ipa($id)
+    {
+        //pilih hapus berdasarkan id
+        $soal_ipa = Ipa::findOrFail($id);
+
+        //hapus laporan ipa
+        $soal_ipa->delete();
+
+        return redirect()->back()->with('success', 'Data Berhasil dihapus');
+    }
+
+    //print berdasarkan user dari nilai Ujian IPA
+    public function print_nilai_ujian_ipa_user($id)
+    {
+
+        $soal_ipa = Ipa::find($id);
+
+        $pdf = Pdf::loadView('admin.aksi_ipa.print_nilai_ipa', compact('soal_ipa'));
+        $pdf->setPaper('a4');
+        $filename = 'Print_Nilai_Ujian_Ipa.pdf';
+
+        return $pdf->stream($filename, ['Attachment' => false]);
     }
 
     //tampilan nilai ujian ips
