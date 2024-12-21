@@ -121,16 +121,23 @@
 
     {{-- Footer --}}
     <div class="footer">
-        <div class="signature">
-            <div>
-                <p>{{ $soal_ipa->name_user }}</p>
-                <p>Peserta</p>
-            </div>
-            <div>
-                <p>{{ Auth::user()->name }}</p>
-                <p>Penyelenggara</p>
-            </div>
-        </div>
-    </div>
+      <table>
+          <tr>
+              <td class="sign-left">
+                  <p></p>
+                  <p>Peserta</p>
+                  <p></p>
+                  <br></br>
+                  <p class="name">{{ $soal_ipa->name_user }}</p>
+              </td>
+              <td class="sign-right">
+                <p>Jambi, {{ \Carbon\Carbon::parse($soal_ipa->created_at)->translatedFormat('d F Y') }} </p>
+                  <p>Penyelenggara</p>
+                  <br></br>
+                  <p class="name">{{ Auth::user()->name }}</p>
+              </td>
+          </tr>
+      </table>
+  </div>
 </body>
 </html>
