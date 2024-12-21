@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
 }
 
 /* bagian header */
@@ -11,19 +10,48 @@ body {
     font-weight: bold;
 }
 
-.header h1{
+.header h1 {
     text-align: center;
     margin-bottom: 10px;
 }
 
 /* bagian content */
-.content{
+.content {
     text-align: justify;
+    font-size: 12px;
 }
 
-.content span{
+.content span {
     color: red;
 }
 
+/* bagian footer */
+.footer {
+    margin-top: 30px;
+}
 
+.footer table {
+    width: 100%;
+}
 
+/* membuat teks pada sign-right ke kanan */
+.sign-left {
+    padding-right: 150px;
+}
+
+/* membuat teks pada sign-left ke kiri */
+.sign-right{
+    padding-left: 200px; 
+}
+
+.sign-left .name{
+    font-weight: bold;
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
+
+.sign-right .name{
+    font-weight: bold;
+    border-top: 2px solid black;
+    padding-top: 10px;
+}
