@@ -4,7 +4,6 @@
 @section('content')
 {{-- isi conten lanjutan dari header --}}
 
-{{-- Modal keluar saat berhasil edit --}}
 {{-- modal saat berhasil edit --}}
 @if(session('success'))
     <div id="success-message-edit" data-message="{{ session('success') }}"></div>
