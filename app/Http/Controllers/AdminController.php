@@ -115,10 +115,24 @@ class AdminController extends Controller
     }
 
     //tampilan nilai ujian ipa dan database
-    public function nilai_ujian_ipa()
+    public function nilai_ujian_ipa(Request $request)
     {
 
-        $soal_ipa = Ipa::latest()->paginate(10);
+        $query = Ipa::query();
+
+        if ($request->has('name') && $request->name != '') {
+            $query->where('name_user', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->has('tanggal_mulai') && $request->tanggal_mulai != '') {
+            $query->whereDate('created_at', '>=', $request->tanggal_mulai);
+        }
+
+        if ($request->has('tanggal_selesai') && $request->tanggal_selesai != '') {
+            $query->whereDate('created_at', '<=', $request->tanggal_selesai);
+        }
+
+        $soal_ipa = $query->latest()->paginate(10);
 
         $data = array(
             'title' => 'Nilai Ujian Ipa',
