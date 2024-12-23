@@ -307,6 +307,106 @@ body {
     color: #4a47a3;
 }
 
+/* bagian tombol download pdf dan excel */
+.download-pdf-excel {
+    text-align: end;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.btn-download {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    text-decoration: none;
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-download-pdf {
+    background-color: #007bff;
+    margin-right: 10px;
+}
+
+.btn-download-pdf:hover {
+    background-color: #0056b3;
+}
+
+.btn-download-excel {
+    background-color: #007bff;
+}
+
+.btn-download-excel:hover {
+    background-color: #0056b3;
+}
+
+.btn-download box-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+}
+
+/* bagian search fot date to date and name */
+.search-container {
+    display: flex;
+    justify-content: center;
+}
+
+.search-container form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-group input[type="date"],
+.form-group input[type="text"] {
+    padding: 8px 10px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    max-width: 200px;
+}
+
+.text-sd {
+    font-size: 14px;
+    color: #555;
+    margin: 5px;
+}
+
+button.btn-search {
+    padding: 8px 20px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+button.btn-search:hover {
+    background-color: #0056b3;
+}
+
+button[type="reset"] {
+    background-color: #dc3545;
+}
+
+button[type="reset"]:hover {
+    background-color: #a71d2a;
+}
+
 /* tabel nilai pada ipa, ips,dan melihat user */
 .title {
     text-align: center;
