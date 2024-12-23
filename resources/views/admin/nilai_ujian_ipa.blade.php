@@ -9,8 +9,28 @@
     <div id="success-message-edit" data-message="{{ session('success') }}"></div>
 @endif
 
+<div class="download-pdf-excel">
+    <a href="#" class="btn-download btn-download-pdf">Download PDF<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
+    <a href="#" class="btn-download btn-download-excel">Download Excel<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
+</div>
+
 <h1 class="title">Tabel Nilai Mapel IPA</h1>
 
+{{-- bagian search --}}
+<div class="search-container">
+    <form method="GET" action="{{ route('nilai_ujian_ipa') }}" id="search-form">
+        <div class="form-group">
+            <input type="date" id="tanggal_mulai" name="tanggal_mulai" value="{{ request('tanggal_mulai') }}">
+            <label class="text-sd">sd</label>
+            <input type="date" id="tanggal_selesai" name="tanggal_selesai" value="{{ request('tanggal_selesai') }}">
+            <input type="text" id="name" name="name" placeholder="Cari Nama" value="{{ request('name') }}">
+            <button type="submit" class="btn-search">Cari</button>
+            <button type="reset" class="btn-search" id="reset-button">Reset</button>
+        </div>
+    </form>
+</div>
+
+{{-- bagian tabel untuk nilai ipa --}}
 <div class="table-container">
     <table>
         <thead>
