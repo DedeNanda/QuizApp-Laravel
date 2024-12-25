@@ -9,9 +9,19 @@
     <div id="success-message-edit" data-message="{{ session('success') }}"></div>
 @endif
 
+{{-- bagian downlaod pdf --}}
 <div class="download-pdf-excel">
-    <a href="#" class="btn-download btn-download-pdf">Download PDF<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
-    <a href="#" class="btn-download btn-download-excel">Download Excel<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
+    <a target="_blank" href="{{ route('downloadPDF_nilai_ipa', [
+    'name' => Request::get('name'),
+    'tanggal_mulai' => Request::get('tanggal_mulai'),
+    'tanggal_selesai' => Request::get('tanggal_selesai'),
+    ]) }}" class="btn-download btn-download-pdf">Download PDF<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
+
+    <a target="_blank" href="{{ route('downloadExcel_nilai_ipa', [
+    'name' => Request::get('name'),
+    'tanggal_mulai' => Request::get('tanggal_mulai'),
+    'tanggal_selesai' => Request::get('tanggal_selesai'),
+    ]) }}" class="btn-download btn-download-excel">Download Excel<box-icon name='download' type='solid' color='#ffffff'></box-icon></a>
 </div>
 
 <h1 class="title">Tabel Nilai Mapel IPA</h1>
@@ -62,7 +72,7 @@
                     <form action="{{ route('destroy_nilai_ujian_ipa', $ipa->id) }}" method="POST" id="form-delete">
 
                     {{-- untuk semua aksi pada folder aksi_ipa --}}
-                    <a href="{{ route('print_nilai_ujian_ipa_user', $ipa->id) }}" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
+                    <a target="_blank" href="{{ route('print_nilai_ujian_ipa_user', $ipa->id) }}" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="{{ route('view_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-view"><box-icon name='show' type='solid' color='#ffffff' ></box-icon></a>
                     <a href="{{ route('edit_nilai_ujian_ipa', $ipa->id) }}" class="btn-aksi btn-edit"><box-icon name='edit-alt' color='#ffffff' ></box-icon></a>
                     {{-- dibawah ini untuk delete pada aksi ipa --}}
