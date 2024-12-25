@@ -86,6 +86,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/destroy_nilai_ujian_ipa/{id}', [AdminController::class, 'destroy_nilai_ujian_ipa'])->name('destroy_nilai_ujian_ipa');
     //print ujian berdasarkan user
     Route::get('/halaman_admin/print_nilai_ujian_ipa_user/{id}', [AdminController::class, 'print_nilai_ujian_ipa_user'])->name('print_nilai_ujian_ipa_user');
+    //download data nilai ujai IPA PDF
+    Route::get('/halaman_admin/downloadPDF_nilai_ipa', [AdminController::class, 'downloadPDF_nilai_ipa'])->name('downloadPDF_nilai_ipa');
+    //download data nilai ipa Excel
+    Route::get('/halaman_admin/downloadExcel_nilai_ipa', [AdminController::class, 'downloadExcel_nilai_ipa'])->name('downloadExcel_nilai_ipa');
 
 
     //tampilan nilai ujian ips
