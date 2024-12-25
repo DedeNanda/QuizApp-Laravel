@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Ipa;
 use App\Models\Ips;
 use App\Models\User;
+use App\Exports\IpaExport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
@@ -220,6 +222,70 @@ class AdminController extends Controller
         return $pdf->stream($filename, ['Attachment' => false]);
     }
 
+    //download PDF nilai ujian IPA
+    public function downloadPDF_nilai_ipa(Request $request)
+    {
+
+        $query = Ipa::query();
+
+        // Filter berdasarkan nama
+        $query->when($request->has('name') && $request->name != '', function ($q) use ($request) {
+            return $q->where('name_user', 'like', '%' . $request->name . '%');
+        });
+
+        // Filter berdasarkan tanggal mulai dan tanggal selesai
+        $query->when($request->has('tanggal_mulai') && $request->tanggal_mulai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '>=', $request->tanggal_mulai);
+        });
+
+        $query->when($request->has('tanggal_selesai') && $request->tanggal_selesai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '<=', $request->tanggal_selesai);
+        });
+
+        $soal_ipa = $query->get();
+
+        $pdf = Pdf::loadView('admin.aksi_ipa.download_pdf_nilai_ipa', [
+            'soal_ipa' => $soal_ipa,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+        ]);
+        $pdf->setPaper('a4');
+        $filename = 'Data_Nilai_Ujian_IPA.pdf';
+
+        return $pdf->stream($filename, ['Attachment' => false]);
+    }
+
+    //download excel pada nilai ujian ipa
+    public function downloadExcel_nilai_ipa(Request $request)
+    {
+        $query = Ipa::query();
+
+        // Filter berdasarkan nama
+        $query->when($request->has('name') && $request->name != '', function ($q) use ($request) {
+            return $q->where('name_user', 'like', '%' . $request->name . '%');
+        });
+
+        // Filter berdasarkan tanggal mulai dan tanggal selesai
+        $query->when($request->has('tanggal_mulai') && $request->tanggal_mulai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '>=', $request->tanggal_mulai);
+        });
+
+        $query->when($request->has('tanggal_selesai') && $request->tanggal_selesai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '<=', $request->tanggal_selesai);
+        });
+
+        // Ambil data yang telah difilter
+        $soal_ipa = $query->get();
+
+        // Kirim data ke IpaExport
+        return Excel::download(new IpaExport($soal_ipa), 'Data_Nilai_Ujian_IPA.xlsx');
+
+        //note
+        /**
+         * jika pada IpaExport ada masalah dibiarin saja asal pada download bisa excelnya masuk data
+         */
+    }
+
     //tampilan nilai ujian ips
     public function nilai_ujian_ips()
     {
@@ -243,6 +309,7 @@ class AdminController extends Controller
 
         return view('admin.aksi_ips.view_nilai_ips', compact('soal_ips'), $data);
     }
+
 
     //tampilan melihat user 
     public function melihat_user()
