@@ -6,6 +6,7 @@ use App\Models\Ipa;
 use App\Models\Ips;
 use App\Models\User;
 use App\Exports\IpaExport;
+use App\Exports\IpsExport;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
@@ -134,7 +135,7 @@ class AdminController extends Controller
             $query->whereDate('created_at', '<=', $request->tanggal_selesai);
         }
 
-        $soal_ipa = $query->latest()->paginate(10);
+        $soal_ipa = $query->latest()->paginate(5);
 
         $data = array(
             'title' => 'Nilai Ujian Ipa',
@@ -161,7 +162,7 @@ class AdminController extends Controller
         $soal_ipa = Ipa::findOrFail($id);
 
         $data = array(
-            'title' => 'Lihat Nilai IPA'
+            'title' => 'Edit Nilai IPA'
         );
 
         return view('admin.aksi_ipa.edit_nilai_ipa', compact('soal_ipa'), $data);
@@ -282,14 +283,33 @@ class AdminController extends Controller
 
         //note
         /**
+         * export ke excel IpaExport
+         * php artisan make:export IpaExport --model=Ipa
+         * 
+         * --models=Ipa : itu di ambil dari nama modelnya
+         * 
          * jika pada IpaExport ada masalah dibiarin saja asal pada download bisa excelnya masuk data
          */
     }
 
     //tampilan nilai ujian ips
-    public function nilai_ujian_ips()
+    public function nilai_ujian_ips(Request $request)
     {
-        $soal_ips = Ips::latest()->paginate(10);
+        $query = Ips::query();
+
+        if ($request->has('name') && $request->name != '') {
+            $query->where('name_user', 'like', '%' . $request->name . '%');
+        }
+
+        if ($request->has('tanggal_mulai') && $request->tanggal_mulai != '') {
+            $query->whereDate('created_at', '>=', $request->tanggal_mulai);
+        }
+
+        if ($request->has('tanggal_selesai') && $request->tanggal_selesai != '') {
+            $query->whereDate('created_at', '<=', $request->tanggal_selesai);
+        }
+
+        $soal_ips = $query->latest()->paginate(5);
 
         $data = array(
             'title' => 'Nilai Ujian Ips',
@@ -311,12 +331,137 @@ class AdminController extends Controller
     }
 
 
+
+    //tampilan dan aksi pada edit untuk IPS
+    public function edit_nilai_ujian_ips($id)
+    {
+        $soal_ips = Ips::findOrFail($id);
+
+        $data = array(
+            'title' => 'Edit Nilai IPS'
+        );
+
+        return view('admin.aksi_ips.edit_nilai_ips', compact('soal_ips'), $data);
+    }
+
+    //proses edit untuk IPS
+    public function proses_edit_nilai_ujian_ips(Request $request, $id)
+    {
+        $soal_ips = Ips::findOrFail($id);
+
+        // Daftar kunci jawaban
+        $kunciJawaban = ['B', 'D', 'C', 'B', 'C', 'C', 'B', 'C', 'B', 'A'];
+
+        $correctCount = 0; // Inisialisasi jumlah jawaban benar
+
+        // Loop melalui semua jawaban yang dikirim
+        foreach ($request->jawaban as $index => $jawaban) {
+            $soalField = 'soal_' . $index;
+            $soal_ips->$soalField = $jawaban;
+
+            // Cek apakah jawaban benar
+            if ($jawaban === $kunciJawaban[$index - 1]) {
+                $correctCount++;
+            }
+        }
+
+        // Perbarui nilai berdasarkan jumlah jawaban benar
+        $soal_ips->value_result = $correctCount * 10; // Misalnya, setiap jawaban benar bernilai 10
+
+        // Simpan perubahan
+        $soal_ips->save();
+
+        return redirect()->route('nilai_ujian_ips')->with('success', 'Jawaban berhasil diperbarui!');
+    }
+
+    //hapus nilai ujian IPS
+    public function destroy_nilai_ujian_ips($id)
+    {
+        //pilih hapus berdasarkan id
+        $soal_ips = Ips::findOrFail($id);
+
+        //hapus laporan ipa
+        $soal_ips->delete();
+
+        return redirect()->back()->with('success', 'Data Berhasil dihapus');
+    }
+
+    //download PDF nilai ujian IPA
+    public function downloadPDF_nilai_ips(Request $request)
+    {
+
+        $query = Ips::query();
+
+        // Filter berdasarkan nama
+        $query->when($request->has('name') && $request->name != '', function ($q) use ($request) {
+            return $q->where('name_user', 'like', '%' . $request->name . '%');
+        });
+
+        // Filter berdasarkan tanggal mulai dan tanggal selesai
+        $query->when($request->has('tanggal_mulai') && $request->tanggal_mulai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '>=', $request->tanggal_mulai);
+        });
+
+        $query->when($request->has('tanggal_selesai') && $request->tanggal_selesai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '<=', $request->tanggal_selesai);
+        });
+
+        $soal_ips = $query->get();
+
+        $pdf = Pdf::loadView('admin.aksi_ipa.download_pdf_nilai_ipa', [
+            'soal_ipa' => $soal_ips,
+            'tanggal_mulai' => $request->tanggal_mulai,
+            'tanggal_selesai' => $request->tanggal_selesai,
+        ]);
+        $pdf->setPaper('a4');
+        $filename = 'Data_Nilai_Ujian_IPS.pdf';
+
+        return $pdf->stream($filename, ['Attachment' => false]);
+    }
+
+    //download excel pada nilai ujian ips
+    public function downloadExcel_nilai_ips(Request $request)
+    {
+        $query = Ips::query();
+
+        // Filter berdasarkan nama
+        $query->when($request->has('name') && $request->name != '', function ($q) use ($request) {
+            return $q->where('name_user', 'like', '%' . $request->name . '%');
+        });
+
+        // Filter berdasarkan tanggal mulai dan tanggal selesai
+        $query->when($request->has('tanggal_mulai') && $request->tanggal_mulai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '>=', $request->tanggal_mulai);
+        });
+
+        $query->when($request->has('tanggal_selesai') && $request->tanggal_selesai != '', function ($q) use ($request) {
+            return $q->whereDate('created_at', '<=', $request->tanggal_selesai);
+        });
+
+        // Ambil data yang telah difilter
+        $soal_ips = $query->get();
+
+        // Kirim data ke IpaExport
+        return Excel::download(new IpsExport($soal_ips), 'Data_Nilai_Ujian_IPS.xlsx');
+
+        //note
+        /**
+         * export ke excel IpaExport
+         * php artisan make:export IpsExport --model=Ips
+         * 
+         * --models=Ips : itu di ambil dari nama modelnya
+         * 
+         * jika pada IpaExport ada masalah dibiarin saja asal pada download bisa excelnya masuk data
+         */
+    }
+
+
     //tampilan melihat user 
     public function melihat_user()
     {
 
         //hanya untuk menampil data user saja tidak admin
-        $user = User::where('level', 'user')->paginate(10);
+        $user = User::where('level', 'user')->paginate(5);
 
         $data = array(
             'title' => 'Melihat User',
@@ -324,4 +469,6 @@ class AdminController extends Controller
 
         return view('admin.melihat_user', compact('user'), $data);
     }
+
+    //lanjutkan disini bagian melihat user
 }
