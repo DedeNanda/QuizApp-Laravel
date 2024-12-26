@@ -81,7 +81,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/halaman_admin/nilai_ujian_ipa', [AdminController::class, 'nilai_ujian_ipa'])->name('nilai_ujian_ipa');
     Route::get('/halaman_admin/view_nilai_ujian_ipa/{id}', [AdminController::class, 'view_nilai_ujian_ipa'])->name('view_nilai_ujian_ipa');
     Route::get('/halaman_admin/edit_nilai_ujian_ipa/{id}', [AdminController::class, 'edit_nilai_ujian_ipa'])->name('edit_nilai_ujian_ipa');
-    //proses pada edit nilai ujian ipa
+    //proses pada edit dan hapus nilai ujian ipa
     Route::put('/proses_edit_nilai_ujian_ipa/{id}', [AdminController::class, 'proses_edit_nilai_ujian_ipa'])->name('proses_edit_nilai_ujian_ipa');
     Route::delete('/destroy_nilai_ujian_ipa/{id}', [AdminController::class, 'destroy_nilai_ujian_ipa'])->name('destroy_nilai_ujian_ipa');
     //print ujian berdasarkan user
@@ -95,6 +95,12 @@ Route::middleware(['auth'])->group(function () {
     //tampilan nilai ujian ips
     Route::get('/halaman_admin/nilai_ujian_ips', [AdminController::class, 'nilai_ujian_ips'])->name('nilai_ujian_ips');
     Route::get('/halaman_admin/view_nilai_ujian_ips/{id}', [AdminController::class, 'view_nilai_ujian_ips'])->name('view_nilai_ujian_ips');
+    Route::get('/halaman_admin/edit_nilai_ujian_ips/{id}', [AdminController::class, 'edit_nilai_ujian_ips'])->name('edit_nilai_ujian_ips');
+    //proses pada edit dan hapus nilai ujian ipS
+    Route::put('/proses_edit_nilai_ujian_ips/{id}', [AdminController::class, 'proses_edit_nilai_ujian_ips'])->name('proses_edit_nilai_ujian_ips');
+    Route::delete('/destroy_nilai_ujian_ips/{id}', [AdminController::class, 'destroy_nilai_ujian_ips'])->name('destroy_nilai_ujian_ips');
+    //download data nilai ujai IPS PDF
+    Route::get('/halaman_admin/downloadPDF_nilai_ips', [AdminController::class, 'downloadPDF_nilai_ips'])->name('downloadPDF_nilai_ips');
 
     //tampilan melihat user
     Route::get('/halaman_admin/melihat_user', [AdminController::class, 'melihat_user'])->name('melihat_user');
