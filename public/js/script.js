@@ -59,28 +59,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     //pesan untuk delete pada nilai IPA dan IPS
-    const deleteButton = document.getElementById("delete-button");
-    const formDelete = document.getElementById("form-delete");
+    const deleteButtons = document.querySelectorAll(".btn-delete");
 
-    if (deleteButton && formDelete) {
-        deleteButton.addEventListener("click", function (e) {
-            e.preventDefault();
+    deleteButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+            const id = button.getAttribute("data-id");
+            const form = document.querySelector(`#form-delete-${id}`);
+
+            // SweetAlert untuk konfirmasi
             Swal.fire({
                 title: "Apakah Anda yakin?",
-                text: "Data yang dihapus tidak dapat dikembalikan!",
+                text: "Data ini akan dihapus secara permanen!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
+                confirmButtonColor: "#d33",
+                cancelButtonColor: "#3085d6",
                 confirmButtonText: "Ya, hapus!",
                 cancelButtonText: "Batal",
             }).then((result) => {
                 if (result.isConfirmed) {
-                    formDelete.submit(); // Kirim form jika konfirmasi OK
+                    form.submit(); // Submit form jika dikonfirmasi
                 }
             });
         });
-    }
+    });
 });
 
 //view password pada login
