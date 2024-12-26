@@ -44,6 +44,10 @@
             @endforelse
         </tbody>
     </table>
+    <div class="pagination justify-content-end">
+        {{-- buat $soal_ipa karena dia tidak masuk forelse --}}
+        {{ $user->links('pagination::bootstrap-4') }}
+    </div>
 </div>
 
 {{-- bawah ini menampilkan footer --}}

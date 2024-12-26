@@ -7,7 +7,7 @@
 <h1 class="title">Edit Jawaban Nilai IPS</h1>
 
 <div class="table-container">
-    <form action="{{ route('proses_edit_nilai_ujian_ipa', $soal_ipa->id) }}" method="POST">
+    <form action="{{ route('proses_edit_nilai_ujian_ips', $soal_ips->id) }}" method="POST">
         {{ csrf_field() }}
         @method('PUT')
         <table>
@@ -20,10 +20,10 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $soal_ipa->name_user }}</td>
-                    <td><input type="number" name="value_result" value="{{ $soal_ipa->value_result }}" style="width: 55px"></td>
+                    <td>{{ $soal_ips->name_user }}</td>
+                    <td><input type="number" name="value_result" value="{{ $soal_ips->value_result }}" style="width: 55px"></td>
                     <td> 
-                        @if ($soal_ipa->value_result >= 75)
+                        @if ($soal_ips->value_result >= 75)
                             Lulus
                         @else
                             Tidak Lulus
@@ -46,8 +46,9 @@
             </thead>
             <tbody>
                 @php
-                $kunciJawaban = ['B', 'C', 'C', 'B', 'B', 'A', 'C', 'B', 'C', 'A'];
+                $kunciJawaban = ['B', 'D', 'C', 'B', 'C', 'C', 'B', 'C', 'B', 'A'];
                 @endphp
+
                 @foreach ($kunciJawaban as $index => $kunci)
                 <tr>
                     <td>{{ $index + 1 }}</td>
@@ -55,8 +56,8 @@
                         <input 
                             type="text" 
                             name="jawaban[{{ $index + 1 }}]" 
-                            value="{{ $soal_ipa->{'soal_' . ($index + 1)} }}" 
-                            style="color: {{ $soal_ipa->{'soal_' . ($index + 1)} === $kunci ? 'black' : 'red' }}; width:30px">
+                            value="{{ $soal_ips->{'soal_' . ($index + 1)} }}" 
+                            style="color: {{ $soal_ips->{'soal_' . ($index + 1)} === $kunci ? 'black' : 'red' }}; width:30px">
                     </td>
                     <td>{{ $kunci }}</td>
                 </tr>

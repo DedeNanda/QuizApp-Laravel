@@ -69,7 +69,7 @@
                 <td>{{ \Carbon\Carbon::parse($ipa->created_at)->translatedFormat('d F Y') }}</td>
                 <td>
                     {{-- pada id="form-delete" itu terdapat pada js nanti di inisiasi" --}}
-                    <form action="{{ route('destroy_nilai_ujian_ipa', $ipa->id) }}" method="POST" id="form-delete">
+                    <form action="{{ route('destroy_nilai_ujian_ipa', $ipa->id) }}" method="POST" id="form-delete-{{ $ipa->id }}">
 
                     {{-- untuk semua aksi pada folder aksi_ipa --}}
                     <a target="_blank" href="{{ route('print_nilai_ujian_ipa_user', $ipa->id) }}" class="btn-aksi btn-print"><box-icon name='printer' type='solid' color='#ffffff' ></box-icon></a>
@@ -79,7 +79,8 @@
 
                     @csrf
                     @method('DELETE')
-                    <button type="button" class="btn-aksi btn-delete" id="delete-button">
+                    {{-- dibawah ini menggunakan sweet alert dan cek pada controller dan script.js --}}
+                    <button type="button" class="btn-aksi btn-delete" data-id="{{ $ipa->id }}">
                         <box-icon name='trash-alt' type='solid' color='#ffffff'></box-icon>
                     </button>
                     </form>
