@@ -18,7 +18,7 @@
             </tr>
         </thead>
         <tbody>
-        @forelse($user as $index => $user)
+        @forelse($users as $index => $user)
             <tr>
                 <td>{{ $index + 1 }}</td>
                 <td>{{ $user->name }}</td>
@@ -45,8 +45,8 @@
         </tbody>
     </table>
     <div class="pagination justify-content-end">
-        {{-- buat $soal_ipa karena dia tidak masuk forelse --}}
-        {{ $user->links('pagination::bootstrap-4') }}
+        {{-- buat $user karena dia tidak masuk forelse --}}
+        {{ $users->links('pagination::bootstrap-4') }}
     </div>
 </div>
 
