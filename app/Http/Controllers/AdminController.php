@@ -461,13 +461,13 @@ class AdminController extends Controller
     {
 
         //hanya untuk menampil data user saja tidak admin
-        $user = User::where('level', 'user')->paginate(5);
+        $users = User::where('level', 'user')->paginate(5);
 
         $data = array(
             'title' => 'Melihat User',
         );
 
-        return view('admin.melihat_user', compact('user'), $data);
+        return view('admin.melihat_user', compact('users'), $data);
     }
 
     //lanjutkan disini bagian melihat user
